@@ -1,22 +1,48 @@
-import React, { Component } from 'react';
-import logo from './logo.svg';
-import './App.css';
-import SigninForm from './components/SigninForm'
+import React, { Component } from 'react'
+import {BrowserRouter as Router, Route, Link, Redirect} from 'react-router-dom'
+import './App.css'
+import PrivateRoute from './utils/PrivateRoute'
+import SigninPage from './components/SigninPage'
+import TrackingForm from './components/TrackingForm'
+import AdminPage from './components/AdminPage'
+
 
 class App extends Component {
   constructor(props) {
     super(props)
-    this.handleSubmit = this.handleSubmit.bind(this)
-  }
-  handleSubmit(e) {
-    console.log(e)
   }
 
+
   render() {
+    const {authenticated} = this.props
+
     return (
-      <SigninForm onSubmit={this.handleSubmit} />
-    );
+      <Router>
+        <div>
+          <header>
+            <ul>
+              <li>
+                <Link to="/">Home</Link>
+              </li>
+              <li>
+                <Link to="/admin-only">Admin only</Link>
+              </li>
+            </ul>
+          </header>
+          <hr />
+
+          <Route exact path="/" component={TrackingForm} />
+          <Route path="/signin" component={SigninPage} />
+          <PrivateRoute path="/admin-only" component={AdminPage} />
+
+        </div>
+      </Router>
+    )
+
+
   }
 }
+
+
 
 export default App;

@@ -6,19 +6,22 @@
     "react": "^16.4.2",
     "react-dom": "^16.4.2",
     "react-redux": "^5.0.7",
+    "react-router-dom": "^4.3.1",
     "react-scripts": "1.1.5",
     "redux": "^4.0.0",
     "redux-thunk": "^2.3.0"
   },
   "scripts": {
-    "start": "react-scripts start",
+    "start": "PORT=3001 react-scripts start",
     "build": "react-scripts build",
-    "test": "react-scripts test --env=jsdom",
+    "test": "react-scripts test --verbose --env=jsdom",
     "eject": "react-scripts eject"
   },
   "devDependencies": {
-    "babel-polyfill": "^6.26.0",
     "jest-dom": "^1.12.0",
-    "react-testing-library": "^5.0.0"
-  }
+    "jest-localstorage-mock": "^2.2.0",
+    "react-testing-library": "^5.0.0",
+    "redux-devtools-extension": "^2.13.5"
+  },
+  "proxy": "http://localhost:3000/"
 }
